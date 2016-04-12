@@ -8,12 +8,12 @@ import React, {
   Component
 } from 'react-native';
 
-import Root from './app/root'
+import RootIos from './app/root_ios'
 
 class penkuoerApp extends Component {
   render() {
     return (
-      <Root />
+      <RootIos />
     );
   }
 }

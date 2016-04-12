@@ -3,10 +3,10 @@
  */
 import React from 'react-native'
 import {Provider} from 'react-redux'
-import configureStore from './store/configureStore'
-import App from './containers/app'
+import configureStore from './store/configure_store'
+import App from './containers/ios/app'
 const store = configureStore();
-class Root extends React.Component {
+class RootIos extends React.Component {
   render() {
     return (
       <Provider store={store}>
@@ -16,4 +16,4 @@ class Root extends React.Component {
   }
 }
 
-export default Root;
+export default RootIos;

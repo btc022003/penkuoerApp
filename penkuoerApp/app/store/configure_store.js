@@ -5,7 +5,7 @@ import {createStore} from 'redux'
 
 import {combineReducers,applyMiddleware,compose} from 'redux'
 
-import rootReducer from '../reducers/index'
+import rootReducer from '../reducers/index_reducer'
 
 import thunk from 'redux-thunk'
 

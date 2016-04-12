@@ -14,14 +14,10 @@ const initialState = {
 export default function movies(state = initialState,action=""){
     switch(action.type) {
         case types.LOAD_MOVIE_DATA:
-            action.data.data.map(item=>state.movies.push(item));
-            //console.log(state)
-            //state.current_page = state.current_page+1;
-            //state.total_pages = action.data.total_pages;
-
-            return Object.assign({}, state,{
-                movies:state.movies
-            });
+            action.data.data.map(item=>state.movies.push(item));            
+            state.page_data.current_page = state.current_page+1;
+            state.page_data.total_pages = action.data.total_pages;
+            return Object.assign({}, state);
 
         case types.LOAD_MOVIE_DETAIL:
             //state.current_article = action.data
