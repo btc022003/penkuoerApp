@@ -41,10 +41,10 @@ class App extends Component{
           To get started, edit index.ios.js
         </Text>
         
-        {this.props.movies.map(function (item) {
+        {this.props.data.movies.map(function (item) {
                     const str = "article_detail?id=" + item.id
                     return (
-<Text style={styles.instructions}>
+<Text style={styles.instructions} key={item.id}>
           {item.title}
         </Text>
                       )
@@ -56,7 +56,6 @@ class App extends Component{
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
   },
