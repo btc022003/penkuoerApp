@@ -15,5 +15,5 @@ export function load_more(page_index){
 
 //////获取详情
 export function load_blog_detail(id) {
-    return dispatch => MoviesApi.prototype.load_blog_detail(dispatch,id)    
+    return dispatch => MoviesApi.prototype.load_movie_detail(dispatch,id)    
 }

@@ -10,6 +10,7 @@ import React, {
   Text,
   View
 } from 'react-native';
+import Loading  from './loading'
 
 class App extends Component{
 
@@ -17,7 +18,7 @@ class App extends Component{
   constructor(props, context) {
         super(props, context)
         const {dispatch,location} = this.props
-  const actions = bindActionCreators(MovieActions,dispatch)
+        const actions = bindActionCreators(MovieActions,dispatch)
 
 
         if (this.props.data.movies.length == 0) {
@@ -29,8 +30,13 @@ class App extends Component{
     }
 
 	render() {
-  
-    return (
+    if(this.props.data.movies.length==0)  //////没有加载数据之前显示loading
+    {
+      return(<Loading />)
+    }
+    else
+    {
+      return (
       <View style={styles.container}>
 
 
@@ -50,9 +56,11 @@ class App extends Component{
                       )
                 })}
       </View>
-    );
+    )
+    }   
   }
 }
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,

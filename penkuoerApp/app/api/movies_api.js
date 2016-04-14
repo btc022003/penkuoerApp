@@ -23,6 +23,7 @@ export default class MoviesApi {
             .done();
     }
 
+    ///////获取数据详情
     load_blog_detail(dispatch,id){
         // $.ajax({
         //     url: APIConfig.APIBaseUrl+'/articles/get_article_detail.json?id=' + id,
