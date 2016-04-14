@@ -11,6 +11,7 @@ import React, {
   View
 } from 'react-native';
 import Loading  from './loading'
+import Nav from './nav'
 
 class App extends Component{
 
@@ -55,6 +56,7 @@ class App extends Component{
         </Text>
                       )
                 })}
+        <Nav />
       </View>
     )
     }   
