@@ -5,4 +5,4 @@
 /*
 api－url
  */
-export const APIBaseUrl = 'http://lixuanqi.com/api/v1'
+export const APIBaseUrl = 'http://localhost:3000/api/v1'

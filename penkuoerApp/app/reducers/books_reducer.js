@@ -13,7 +13,21 @@ const initialState = {
 
 export default function books(state = initialState,action=""){
     switch(action.type) {
+
+    	case types.LOAD_BOOK_DATA:
+    		action.data.data.map(item=>state.books.push(item)); 
+            state.page_data.current_page = action.data.current_page+1;
+            state.page_data.total_pages = action.data.total_pages;
+    		return Object.assign({}, state);
         
+        case types.LOAD_BOOK_DETAIL:
+            state.current_book = action.data.data;            
+            return Object.assign({}, state);
+
+        case types.RESET_CURRENT_BOOK:
+            state.current_book = {}
+            return Object.assign({},state);
+
         default:
             return state;
     }

@@ -3,9 +3,12 @@
  */
 import { combineReducers } from 'redux';
 import movies from './movies_reducer'
+import books from './books_reducer'
 
 const rootReducer = combineReducers({
-    movies
+    movies,
+    books
+
 });
 
 export default rootReducer;

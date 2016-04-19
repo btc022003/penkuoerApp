@@ -8,7 +8,7 @@
 import * as types from '../constants/ActionTypes'
 import BooksApi from '../api/books_api'
 
-export function load_movies_data(){
+export function load_books_data(){
 	return dispatch => BooksApi.prototype.load_data(dispatch)
 }
 
@@ -20,4 +20,11 @@ export function load_more(page_index){
 //////获取详情
 export function load_blog_detail(id) {
     return dispatch => BooksApi.prototype.load_book_detail(dispatch,id)    
+}
+
+export function reset_current_book(){
+	return {
+        type:types.RESET_CURRENT_BOOK,
+        data:{}
+    }   
 }
