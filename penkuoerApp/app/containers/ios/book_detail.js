@@ -14,7 +14,9 @@ import React, {
   ScrollView
 } from 'react-native';
 
-import HTMLView from '../../components/ios/HTMLView/HTMLView'
+import HTMLView from 'react-native-htmlview'
+import NavigationBar from 'react-native-navbar'
+import Loading from './loading'
 
 const _navigator = {}
 const _current_item = {}
@@ -24,13 +26,18 @@ const _actions = {}
 class BookDetail extends Component{
 	constructor(props, context) {
         super(props, context)  
+        
         _navigator = props.navigator
         _current_item = props.passProps
-        _data = props.data   
+        _data = props.data    
 
-
-        
-
+        //_actions = props.actions
+        //_actions.load_blog_detail(_current_item.id)
+                      
+    }
+    componentDidMount(){
+      _actions.load_blog_detail(_current_item.id)
+      //console.log(this.props.data)
     }
 
     do_back(){
@@ -39,43 +46,41 @@ class BookDetail extends Component{
       }
     
     render(){
-       const {dispatch,location} = this.props
-       
+       const {dispatch,location,data} = this.props
 
-       if(this.props.data.current_book.content == null){
-        _actions = bindActionCreators(BookActions,dispatch) 
-       }
-        _actions.load_blog_detail(_current_item.id)  
+       _actions = bindActionCreators(BookActions,dispatch) 
+       
+       //console.log(this.data)
+       
+        const leftButtonConfig = {
+          title: 'Back',
+          handler: () => {_navigator.pop()}
+        };
+
+        const titleConfig = {
+          title: _current_item.title==null?"详情":_current_item.title,
+        }; 
        
     	
-         if (!this.props.data.current_book) {
+         if (!this.props.data) {
             return (
               <View>
-                <TouchableHighlight
-                  onPress={()=>this.do_back()}
-                  underlayColor='#FFFFFF'>
-                  <View>
-                    <Text style={styles.btnBack}>返回</Text>
-                    <Text>{_data.item.title}</Text>
-                </View>
-                </TouchableHighlight>
-                <LoadingView />
+                <NavigationBar
+                  title={titleConfig}
+                  leftButton={leftButtonConfig} />
+                <Loading />
+                <Text>111</Text>
               </View>
                 
             );
         }
 
         return (
-            <ScrollView style={styles.pageContainer}>
-                <TouchableHighlight
-                  onPress={()=>this.do_back()}
-                  underlayColor='#FFFFFF'>
-                  <View>
-                    <Text style={styles.btnBack}>返回</Text>
-                    <Text>{_current_item.title}</Text>
-                  </View>
-                </TouchableHighlight>
-                <HTMLView value={this.props.data.current_book.content}></HTMLView>
+            <ScrollView style={styles.pageContainer}>                
+                <NavigationBar
+                  title={titleConfig}
+                  leftButton={leftButtonConfig} />                
+                <HTMLView value={this.props.data.content}></HTMLView>
             </ScrollView>
         );
     }
@@ -100,7 +105,7 @@ const styles = StyleSheet.create({
 
 function mapStateToProps(state){
     return{
-        data : state.app.books
+        data : state.app.books.current_book
     }
 }
 

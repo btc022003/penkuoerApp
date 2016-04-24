@@ -18,6 +18,8 @@ import React, {
 import Loading from './loading'
 import BookDetail from './book_detail'
 
+import NavigationBar from 'react-native-navbar'
+
 const _actions = {}
 const _data = {}
 const _navigator = {}
@@ -41,15 +43,28 @@ export default class BookList extends Component{
           return(
             <Loading />
             )
-      }    
+      }   
+      const rightButtonConfig = {
+        title: 'Next',
+        handler: () => alert('hello!'),
+      };
+
+      const titleConfig = {
+        title: '儿童读物',
+      }; 
       return (
-        <ListView
-          dataSource={this.dataSource.cloneWithRows(this.props.data.books)}
-          pageSize={10}
-          renderRow={this.renderList}
-          style={styles.listView}
-          renderFooter={this.renderFooter}
-          onEndReached={this.endReached}/>
+        <View  style={{ flex: 1, }}>
+          <NavigationBar
+          title={titleConfig}
+          rightButton={rightButtonConfig} />
+          <ListView
+            dataSource={this.dataSource.cloneWithRows(this.props.data.books)}
+            pageSize={10}
+            renderRow={this.renderList}
+            style={styles.listView}
+            renderFooter={this.renderFooter}
+            onEndReached={this.endReached}/>
+          </View>
       )    	
     }
 
@@ -111,7 +126,7 @@ export default class BookList extends Component{
             component: BookDetail,
             passProps: item,
             data:_data,
-            name:'BookDetail',            
+            name:'BookDetail'       
         });
 
     }

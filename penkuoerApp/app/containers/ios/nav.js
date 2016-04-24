@@ -3,7 +3,7 @@
 * 导航空间
 * ****/
 
-import React,{TabBarIOS,Component,Navigator,TabBarItemIOS,StyleSheet} from 'react-native';
+import React,{TabBarIOS,Component,Navigator,Text,TabBarItemIOS,StyleSheet} from 'react-native';
 
 import App  from './app'
 import BookDetail from './book_detail'
@@ -13,7 +13,7 @@ export default class Nav extends Component{
         super(props, context)
         const {dispatch,location} = this.props   
 
-        this.state = {selectedTab:'blueTab'}
+        this.state = {selectedTab:1}
         // this.setState({selectedTab:'blueTab'})
         console.log(this.state)
     }
@@ -50,10 +50,50 @@ export default class Nav extends Component{
 
     render(){
     	return(
-    		<Navigator
+    		
+                <TabBarIOS
+        tintColor="white"
+        barTintColor="darkslateblue">
+        <TabBarIOS.Item
+        systemIcon="contacts"
+          title="Blue Tab" selected={this.state.selectedTab == '1'}
+
+          onPress={() => {
+            this.setState({
+              selectedTab: 1,
+            });
+          }}
+
+          >
+          <Navigator
                 initialRoute={{name: 'App'}}
                 configureScene={this.configureScene}
-                renderScene={this.renderScene} />)              
+                renderScene={this.renderScene} />  
+        </TabBarIOS.Item>
+        <TabBarIOS.Item
+          systemIcon="history"
+          selected={this.state.selectedTab == '2'}
+          onPress={() => {
+            this.setState({
+              selectedTab: 2,
+            });
+          }}
+          >
+          <Text>222</Text>
+        </TabBarIOS.Item>
+        <TabBarIOS.Item
+        systemIcon="bookmarks"
+        selected={this.state.selectedTab == '3'}
+          onPress={() => {
+            this.setState({
+              selectedTab: 3,
+            });
+          }}
+          >
+          <Text>333</Text>
+        </TabBarIOS.Item>
+      </TabBarIOS>
+    );            
     }
 }
 const styles = StyleSheet.create({

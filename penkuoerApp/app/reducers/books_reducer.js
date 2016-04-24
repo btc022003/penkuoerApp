@@ -21,7 +21,8 @@ export default function books(state = initialState,action=""){
     		return Object.assign({}, state);
         
         case types.LOAD_BOOK_DETAIL:
-            state.current_book = action.data.data;            
+            state.current_book = action.data.data;  
+            //console.log(state.current_book)          
             return Object.assign({}, state);
 
         case types.RESET_CURRENT_BOOK:
