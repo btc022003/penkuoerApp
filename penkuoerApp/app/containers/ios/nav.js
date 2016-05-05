@@ -7,6 +7,8 @@ import React,{TabBarIOS,Component,Navigator,Text,TabBarItemIOS,StyleSheet} from 
 
 import App  from './app'
 import BookDetail from './book_detail'
+
+import MoviesApp from './app_movies'
 import Loading from './loading'
 export default class Nav extends Component{
 	constructor(props, context) {
@@ -24,7 +26,7 @@ export default class Nav extends Component{
 
     renderScene(router, navigator){
       var Component = null;
-      this._navigator = navigator;
+      // this._navigator = navigator;
       //console.log('do nav bd '+router.name);
       switch(router.name){
         case "App":
@@ -41,6 +43,35 @@ export default class Nav extends Component{
           break;
         default: //default view
           Component = App;
+
+      }
+      // const {dispatch,location} = router.props
+
+      return <Component navigator={navigator} passProps={router.passProps} data={router.data}/>
+    }
+    configureSceneNavMovie(route){
+      return Navigator.SceneConfigs.FadeAndroid;
+    }
+
+    renderSceneNavMovie(router, navigator){
+      var Component = null;
+      // this._navigator = navigator;
+      //console.log('do nav bd '+router.name);
+      switch(router.name){
+        case "Movies":
+          Component = MoviesApp;
+          break;
+
+        case "MovieDetail":
+            console.log(this)
+            Component = BookDetail;
+            break;
+
+        case "pan_movie":
+          //Component = FeedView;
+          break;
+        default: //default view
+          Component = MoviesApp;
 
       }
       // const {dispatch,location} = router.props
@@ -79,7 +110,10 @@ export default class Nav extends Component{
             });
           }}
           >
-          <Text>222</Text>
+           <Navigator
+                initialRoute={{name: 'Movies'}}
+                configureScene={this.configureSceneNavMovie}
+                renderScene={this.renderSceneNavMovie} /> 
         </TabBarIOS.Item>
         <TabBarIOS.Item
         systemIcon="bookmarks"

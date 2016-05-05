@@ -11,7 +11,7 @@ export default class MoviesApi {
 
     /////分页方式加载数据
     load_data(dispatch, page_index = 1) {    	
-        let url = APIConfig.APIBaseUrl + '/articles/get_articles_by_page.json?page=' + page_index;
+        let url = APIConfig.APIBaseUrl + '/movie/get_movies_by_page.json?page=' + page_index;
         fetch(url)
             .then((res) => res.json())
             .then((res) => {
@@ -25,20 +25,15 @@ export default class MoviesApi {
 
     ///////获取数据详情
     load_blog_detail(dispatch,id){
-        // $.ajax({
-        //     url: APIConfig.APIBaseUrl+'/articles/get_article_detail.json?id=' + id,
-        //     type: 'GET',
-        //     dataType: 'json'
-        // }).done(function (res) {
-        //     dispatch({
-        //         type: types.LOAD_MOVIE_DETAIL,
-        //         data: res.data
-        //     });
-        //     console.log("success");
-        // }).fail(function () {
-        //     console.log("error");
-        // }).always(function () {
-        //     console.log("complete");
-        // });
+        let url = APIConfig.APIBaseUrl + '/movie/get_movie_detail.json?id=' + id;
+        fetch(url)
+            .then((res) => res.json())
+            .then((res) => {
+                    dispatch({
+                    type: types.LOAD_BOOK_DETAIL,
+                    data: res
+                })
+            })
+            .done();  
     }
 }

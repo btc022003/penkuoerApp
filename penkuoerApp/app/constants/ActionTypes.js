@@ -9,6 +9,8 @@ export const LOAD_MOVIE_DATA = 'LOAD_MOVIE_DATA';
 ///// 加载资源详情
 export const LOAD_MOVIE_DETAIL = 'LOAD_MOVIE_DETAIL';
 
+export const RESET_CURRENT_MOVIE = 'RESET_CURRENT_MOVIE';
+
 
 
 ///// 加载book资源列表
