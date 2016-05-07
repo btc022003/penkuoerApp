@@ -23,15 +23,10 @@ class MovieDetail extends Component{
         
         _navigator = props.navigator
         _current_item = props.passProps
-        _data = props.data    
-
-        //_actions = props.actions
-        //_actions.load_blog_detail(_current_item.id)
-                      
+        _data = props.data                          
     }
     componentDidMount(){
-      _actions.load_movie_detail(_current_item.id)
-      //console.log(this.props.data)
+      _actions.load_movie_detail(_current_item.id)      
     }
 
     do_back(){
@@ -43,8 +38,6 @@ class MovieDetail extends Component{
        const {dispatch,location,data} = this.props
 
        _actions = bindActionCreators(MoviesActions,dispatch) 
-       
-       //console.log(this.data)
        
         const leftButtonConfig = {
           title: 'Back',
