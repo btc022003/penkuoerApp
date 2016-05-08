@@ -9,6 +9,7 @@ export const LOAD_MOVIE_DATA = 'LOAD_MOVIE_DATA';
 ///// 加载资源详情
 export const LOAD_MOVIE_DETAIL = 'LOAD_MOVIE_DETAIL';
 
+//// 重置当前选中数据
 export const RESET_CURRENT_MOVIE = 'RESET_CURRENT_MOVIE';
 
 
@@ -19,4 +20,5 @@ export const LOAD_BOOK_DATA = 'LOAD_BOOK_DATA';
 ///// 加载book资源详情
 export const LOAD_BOOK_DETAIL = 'LOAD_BOOK_DETAIL';
 
+//// 重置当前选中数据
 export const RESET_CURRENT_BOOK = 'RESET_CURRENT_BOOK';

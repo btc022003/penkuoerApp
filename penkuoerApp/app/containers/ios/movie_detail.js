@@ -71,8 +71,6 @@ class MovieDetail extends Component{
             </ScrollView>
         );
     }
-
-
 }
 
 const styles = StyleSheet.create({
