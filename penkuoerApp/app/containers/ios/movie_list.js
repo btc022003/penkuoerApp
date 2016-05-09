@@ -14,7 +14,8 @@ import React, {
   View,
   TouchableHighlight,
   ListView,
-  Navigator
+  Navigator,
+  Image
 } from 'react-native';
 
 import Loading from './loading'
@@ -126,7 +127,7 @@ export default class MovieList extends Component{
             component: BookDetail,
             passProps: item,
             data:_data,
-            name:'BookDetail'       
+            name:'MovieDetail'       
         });
 
     }
@@ -137,11 +138,11 @@ export default class MovieList extends Component{
         <View style={styles.pageContainer}>
                     <View style={[styles.container, styles.newsItemContainer]}>
                         <Image
-                            source={{uri : article.pic}}
+                            source={{uri : item.pic}}
                             style={styles.newsPic} />
                         <View style={styles.rightContainer}>
-                            <Text style={styles.newsTitle}>{article.title}</Text>
-                            <Text style={styles.newsSummary}>{article.summary}</Text>
+                            <Text style={styles.newsTitle}>{item.title}</Text>
+                            
                         </View>
                     </View>
                 </View>
@@ -208,4 +209,10 @@ const styles = StyleSheet.create({
         fontSize : 14,
         textAlign : 'left',
     },
+    newsPic : {
+      width : 90,
+        height : 60,
+        margin: 10,
+        marginLeft: 0,
+    }
 });

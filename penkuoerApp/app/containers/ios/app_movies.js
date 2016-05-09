@@ -18,7 +18,7 @@ class MoviesApp extends Component{
 
   render() {
       const {dispatch,location,data} = this.props
-      const actions = bindActionCreators(BooksActions,dispatch)
+      const actions = bindActionCreators(MoviesActions,dispatch)
       return(
        <MovieList navigator={this.props.navigator} actions={actions} data={this.props.data}/>
        )

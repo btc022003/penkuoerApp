@@ -18,7 +18,7 @@ export function load_blog_detail(id) {
     return dispatch => MoviesApi.prototype.load_movie_detail(dispatch,id)    
 }
 
-export function reset_current_book(){
+export function reset_current_movie(){
 	return {
         type:types.RESET_CURRENT_MOVIE,
         data:{}

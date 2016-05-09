@@ -56,7 +56,6 @@ class MovieDetail extends Component{
                   title={titleConfig}
                   leftButton={leftButtonConfig} />
                 <Loading />
-                <Text>111</Text>
               </View>
                 
             );
