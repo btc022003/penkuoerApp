@@ -86,7 +86,7 @@ export default class Nav extends Component{
         tintColor="white"
         barTintColor="darkslateblue">
         <TabBarIOS.Item
-        systemIcon="contacts"
+        systemIcon="bookmarks"
           title="Blue Tab" selected={this.state.selectedTab == '1'}
 
           onPress={() => {
@@ -102,7 +102,7 @@ export default class Nav extends Component{
                 renderScene={this.renderScene} />  
         </TabBarIOS.Item>
         <TabBarIOS.Item
-          systemIcon="history"
+          systemIcon="favorites"
           selected={this.state.selectedTab == '2'}
           onPress={() => {
             this.setState({
@@ -116,7 +116,7 @@ export default class Nav extends Component{
                 renderScene={this.renderSceneNavMovie} /> 
         </TabBarIOS.Item>
         <TabBarIOS.Item
-        systemIcon="bookmarks"
+        systemIcon="featured"
         selected={this.state.selectedTab == '3'}
           onPress={() => {
             this.setState({
